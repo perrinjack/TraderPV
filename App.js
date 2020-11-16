@@ -22,7 +22,7 @@ import {
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 import { Button, FAB } from 'react-native-paper';
-
+import { HomeScreen } from './Screens/HomeScreen';
 const CombinedDarkTheme = {
   ...DefaultTheme,
   roundness: 6,
@@ -36,81 +36,6 @@ const CombinedDarkTheme = {
   },
 };
 
-const styles = StyleSheet.create({
-  home: {
-    marginHorizontal: 2,
-  },
-  fab: {
-    position: 'absolute',
-    margin: 8,
-    right: 0,
-    bottom: 0,
-  },
-  titleCard: {
-    height: 90,
-  },
-  topbackdrop: {
-    backgroundColor: '#1d2238',
-  },
-  backdrop: {
-    backgroundColor: 'lightgray',
-  },
-});
-
-class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      updateToggle: false,
-      loading: false,
-    };
-  }
-
-  updateFeed() {
-    this.setState({ loading: true });
-    this.setState({ updateToggle: !this.state.updateToggle });
-    setTimeout(
-      function () {
-        this.setState({ loading: false });
-      }.bind(this),
-      2000
-    );
-  }
-
-  render() {
-    return (
-      <SafeAreaView style={styles.topbackdrop}>
-        <Card style={styles.titleCard}>
-          <Card.Title
-            titleStyle={{ color: 'white' }}
-            title="FX rate feed UK"
-            subtitle="Last Updated @"
-          />
-
-          <Card.Content>
-            <FAB
-              style={styles.fab}
-              large
-              icon="update"
-              loading={this.state.loading}
-              onPress={() => this.updateFeed()}
-            />
-          </Card.Content>
-        </Card>
-
-        <ScrollView style={styles.home}>
-          {/* <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} /> */}
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
-}
 const HomeStack = () => {
   return (
     <HomeNav.Navigator>
