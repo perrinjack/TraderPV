@@ -23,6 +23,8 @@ import {
 } from 'react-native-paper';
 import { Button, FAB } from 'react-native-paper';
 import { HomeScreen } from './Screens/HomeScreen';
+
+import { HomeStack } from './Stacks/Home';
 const CombinedDarkTheme = {
   ...DefaultTheme,
   roundness: 6,
@@ -34,18 +36,6 @@ const CombinedDarkTheme = {
     surface: '#1d2238',
     text: 'white',
   },
-};
-
-const HomeStack = () => {
-  return (
-    <HomeNav.Navigator>
-      <HomeNav.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-    </HomeNav.Navigator>
-  );
 };
 
 const SettingsStack = () => {
