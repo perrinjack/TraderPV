@@ -38,7 +38,7 @@ export class Dashboard extends React.Component {
   render() {
     return (
       this.state.loaded && (
-        <ScrollView>
+        <View>
           <Card style={styles.surface}>
             <Card.Content>
               <Title>
@@ -72,7 +72,7 @@ export class Dashboard extends React.Component {
               </Paragraph>
             </Card.Content>
           </Card>
-        </ScrollView>
+        </View>
       )
     );
   }
@@ -83,5 +83,6 @@ const styles = StyleSheet.create({
     elevation: 40,
     borderRadius: 6,
     backgroundColor: '#43B0F1',
+    marginVertical: 6,
   },
 });

@@ -5,18 +5,28 @@ import {
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { Dashboard } from './Components/dashboard';
 import {
   Provider as PaperProvider,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 
+const styles = StyleSheet.create({
+  home: {
+    marginHorizontal: 10,
+    marginHorizontal: 4,
+  },
+});
+
 function HomeScreen() {
   return (
-    <View>
-      <Dashboard from={"USD"} to={"JPY"} />
-    </View>
+    <ScrollView style={styles.home}>
+      <Dashboard from={'USD'} to={'JPY'} />
+      <Dashboard from={'GBP'} to={'USD'} />
+      <Dashboard from={'GBP'} to={'USD'} />
+      <Dashboard from={'GBP'} to={'USD'} />
+    </ScrollView>
   );
 }
 
@@ -26,7 +36,11 @@ function App() {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
           <Stack.Screen name="FX" component={HomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
