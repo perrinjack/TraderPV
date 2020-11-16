@@ -5,7 +5,7 @@ import {
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
 import { Dashboard } from './Components/dashboard';
 import {
   DefaultTheme,
@@ -26,14 +26,16 @@ const CombinedDarkTheme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#3498db',
-    accent: '#f1c40f',
+    accent: '#4169e1',
+    background: '#f1c40f',
+    surface: '#1d2238',
+    text: 'white',
   },
 };
 
 const styles = StyleSheet.create({
   home: {
-    marginHorizontal: 10,
-    marginVertical: 40,
+    marginHorizontal: 2,
   },
   fab: {
     position: 'absolute',
@@ -43,7 +45,6 @@ const styles = StyleSheet.create({
   },
   titleCard: {
     height: 90,
-    backgroundColor: '#4169e1',
   },
 });
 
@@ -69,7 +70,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.home}>
+      <SafeAreaView style={styles.home}>
         <Card style={styles.titleCard}>
           <Card.Title
             titleStyle={{ color: 'white' }}
@@ -91,7 +92,7 @@ class HomeScreen extends React.Component {
         <ScrollView style={styles.home}>
           {/* <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} /> */}
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   }
 }
