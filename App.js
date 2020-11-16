@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Icon } from 'react-native-elements';
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
 import { Dashboard } from './Components/dashboard';
 import {
   DefaultTheme,
@@ -46,6 +48,12 @@ const styles = StyleSheet.create({
   titleCard: {
     height: 90,
   },
+  topbackdrop: {
+    backgroundColor: '#1d2238',
+  },
+  backdrop: {
+    backgroundColor: 'lightgray',
+  },
 });
 
 class HomeScreen extends React.Component {
@@ -70,7 +78,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.home}>
+      <SafeAreaView style={styles.topbackdrop}>
         <Card style={styles.titleCard}>
           <Card.Title
             titleStyle={{ color: 'white' }}
@@ -96,20 +104,54 @@ class HomeScreen extends React.Component {
     );
   }
 }
+const HomeStack = () => {
+  return (
+    <HomeNav.Navigator>
+      <HomeNav.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+    </HomeNav.Navigator>
+  );
+};
 
-const Stack = createStackNavigator();
+const SettingsStack = () => {
+  return <Text>Hello</Text>;
+};
+
+const Tab = createBottomTabNavigator();
+const HomeNav = createStackNavigator();
 
 function App() {
   return (
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
+        <Tab.Navigator
+          initialRouteName={'Home'}
+          tabBarOptions={{
+            activeTintColor: '#fff',
+            inactiveTintColor: 'lightgray',
+            activeBackgroundColor: '#1d2238',
+            inactiveBackgroundColor: '#1d2238',
+            style: {},
           }}
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, size }) => {
+              let iconName;
+              let color = '#3498db';
+              if (route.name === 'Home') {
+                iconName = focused ? 'ios-home' : 'ios-add';
+              } else if (route.name === 'Settings') {
+                iconName = focused ? 'ios-list-box' : 'ios-list';
+              }
+              return <Icon name={iconName} type="ionicon" color={color} />;
+            },
+          })}
         >
-          <Stack.Screen name="FX" component={HomeScreen} />
-        </Stack.Navigator>
+          <Tab.Screen name="Home" component={HomeStack} />
+          <Tab.Screen name="Settings" component={SettingsStack} />
+        </Tab.Navigator>
       </NavigationContainer>
     </PaperProvider>
   );
