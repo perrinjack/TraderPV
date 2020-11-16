@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import apiKey from '../apiKey.js';
 import axios from 'axios';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, ScrollView, View } from 'react-native';
+import { Surface, Text, Card, Title, Paragraph } from 'react-native-paper';
 
 export class Dashboard extends React.Component {
-  state = {
-    data: null,
-    loaded: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      loaded: false,
+    };
+  }
 
   componentDidMount() {
     this.handleSubmit();
@@ -17,10 +21,10 @@ export class Dashboard extends React.Component {
   handleSubmit = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=7ECA0DL4Z1Q6NGD1`
+        `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${this.props.from}&to_currency=${this.props.to}&apikey=7ECA0DL4Z1Q6NGD1`
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res.data);
         this.setState({
           data: [res.data],
         });
@@ -32,6 +36,52 @@ export class Dashboard extends React.Component {
   };
 
   render() {
-    return this.state.loaded && <View></View>;
+    return (
+      this.state.loaded && (
+        <ScrollView>
+          <Card style={styles.surface}>
+            <Card.Content>
+              <Title>
+                {
+                  this.state.data[0]['Realtime Currency Exchange Rate'][
+                    '1. From_Currency Code'
+                  ]
+                }{' '}
+                to{' '}
+                {
+                  this.state.data[0]['Realtime Currency Exchange Rate'][
+                    '3. To_Currency Code'
+                  ]
+                }
+              </Title>
+
+              <Paragraph>
+                {
+                  this.state.data[0]['Realtime Currency Exchange Rate'][
+                    '5. Exchange Rate'
+                  ]
+                }
+              </Paragraph>
+              <Paragraph>
+                Last Updated:
+                {
+                  this.state.data[0]['Realtime Currency Exchange Rate'][
+                    '6. Last Refreshed'
+                  ]
+                }
+              </Paragraph>
+            </Card.Content>
+          </Card>
+        </ScrollView>
+      )
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  surface: {
+    elevation: 40,
+    borderRadius: 6,
+    backgroundColor: '#43B0F1',
+  },
+});
