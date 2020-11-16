@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
 import { Dashboard } from './Components/dashboard';
+import { MockDashboard } from './Components/mockDashboard';
 import {
   DefaultTheme,
   Surface,
@@ -99,6 +100,12 @@ class HomeScreen extends React.Component {
 
         <ScrollView style={styles.home}>
           {/* <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} /> */}
+          <MockDashboard />
+          <MockDashboard />
+          <MockDashboard />
+          <MockDashboard />
+          <MockDashboard />
+          <MockDashboard />
         </ScrollView>
       </SafeAreaView>
     );

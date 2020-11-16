@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   surface: {
     elevation: 40,
     borderRadius: 6,
-    backgroundColor: '#43B0F1',
+    backgroundColor: '#4169e1',
     marginVertical: 6,
   },
 });
