@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Text,
+  Dimensions,
+} from 'react-native';
 
 import { MockDashboard } from '../Components/mockDashboard';
 import { Card } from 'react-native-paper';
@@ -37,7 +44,7 @@ export class DetailsScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.topbackdrop}>
-        <Card style={styles.titleCard}>
+        <Card>
           <Card.Title title="USD // Eur pair " />
         </Card>
         <Card>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, Text } from 'react-native';
 import {
   LineChart,
   PieChart,
@@ -7,19 +7,24 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-
 const screenWidth = Dimensions.get('window').width;
-export const Chart = () => {
-  return (
-    <LineChart
-      data={data}
-      width={screenWidth}
-      height={220}
-      chartConfig={chartConfig}
-      bezier
-    />
-  );
-};
+
+export class Chart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <LineChart
+        data={data}
+        width={screenWidth}
+        height={220}
+        chartConfig={chartConfig}
+        bezier
+      />
+    );
+  }
+}
 
 const chartConfig = {
   backgroundGradientFrom: '#1E2923',
