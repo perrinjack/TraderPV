@@ -26,10 +26,10 @@ const chartConfig = {
   backgroundGradientFromOpacity: 0,
   backgroundGradientTo: '#08130D',
   backgroundGradientToOpacity: 0.5,
-  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  color: (opacity = 1) => `#4169e1`,
   strokeWidth: 2, // optional, default 3
   barPercentage: 0.5,
-  useShadowColorFromDataset: false, // optional
+  useShadowColorFromDataset: true, // optional
 };
 
 const data = {
@@ -37,7 +37,7 @@ const data = {
   datasets: [
     {
       data: [20, 45, 28, 80, 99, 43],
-      color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+      color: (opacity = 1) => `#4169e1`, // optional
       strokeWidth: 2, // optional
     },
   ],
