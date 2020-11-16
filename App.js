@@ -1,30 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
-import { Dashboard } from './Components/dashboard';
-import { MockDashboard } from './Components/mockDashboard';
-import {
-  DefaultTheme,
-  Surface,
-  Card,
-  Title,
-  Paragraph,
-} from 'react-native-paper';
+
+import { DefaultTheme } from 'react-native-paper';
 import {
   Provider as PaperProvider,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
-import { Button, FAB } from 'react-native-paper';
-import { HomeScreen } from './Screens/HomeScreen';
 
 import { HomeStack } from './Stacks/Home';
+import { SettingsStack } from './Stacks/Settings';
+
 const CombinedDarkTheme = {
   ...DefaultTheme,
   roundness: 6,
@@ -38,12 +29,7 @@ const CombinedDarkTheme = {
   },
 };
 
-const SettingsStack = () => {
-  return <Text>Hello</Text>;
-};
-
 const Tab = createBottomTabNavigator();
-const HomeNav = createStackNavigator();
 
 function App() {
   return (
