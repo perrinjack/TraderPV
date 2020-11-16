@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
-
+import { Button } from 'react-native';
 import { MockDashboard } from '../Components/mockDashboard';
 import { Card } from 'react-native-paper';
-
+import { Chart } from '../Components/chart';
 import { FAB } from 'react-native-paper';
 
 const styles = StyleSheet.create({
@@ -54,7 +54,7 @@ export class HomeScreen extends React.Component {
         <Card style={styles.titleCard}>
           <Card.Title
             titleStyle={{ color: 'white' }}
-            title="FX rate feed UK"
+            title="Your FX rate feed "
             subtitle="Last Updated @"
           />
 
@@ -71,12 +71,31 @@ export class HomeScreen extends React.Component {
 
         <ScrollView style={styles.home}>
           {/* <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} /> */}
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
-          <MockDashboard />
+
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
         </ScrollView>
       </SafeAreaView>
     );

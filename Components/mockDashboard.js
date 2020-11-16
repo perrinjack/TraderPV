@@ -5,12 +5,12 @@ import axios from 'axios';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { Surface, Text, Card, Title, Paragraph } from 'react-native-paper';
 
-export function MockDashboard() {
+export function MockDashboard(props) {
   return (
     <View>
-      <Card style={styles.surface}>
+      <Card style={styles.surface} onPress={() => props.navigation.push('Details')}>
         <Card.Content>
-          <Title>USD // GBP</Title>
+          <Title>{props.title}</Title>
 
           <Paragraph>{Math.random()}</Paragraph>
           <Paragraph>Last Updated:</Paragraph>
