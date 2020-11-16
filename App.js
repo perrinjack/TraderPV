@@ -8,10 +8,27 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Dashboard } from './Components/dashboard';
 import {
+  DefaultTheme,
+  Surface,
+  Card,
+  Title,
+  Paragraph,
+} from 'react-native-paper';
+import {
   Provider as PaperProvider,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 import { Button, FAB } from 'react-native-paper';
+
+const CombinedDarkTheme = {
+  ...DefaultTheme,
+  roundness: 6,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3498db',
+    accent: '#f1c40f',
+  },
+};
 
 const styles = StyleSheet.create({
   home: {
@@ -20,9 +37,13 @@ const styles = StyleSheet.create({
   },
   fab: {
     position: 'absolute',
-    margin: 16,
+    margin: 8,
     right: 0,
     bottom: 0,
+  },
+  titleCard: {
+    height: 90,
+    backgroundColor: '#4169e1',
   },
 });
 
@@ -48,16 +69,29 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.home}>
-        <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} />
-        <FAB
-          style={styles.fab}
-          large
-          icon="update"
-          loading={this.state.loading}
-          onPress={() => this.updateFeed()}
-        />
-      </ScrollView>
+      <View style={styles.home}>
+        <Card style={styles.titleCard}>
+          <Card.Title
+            titleStyle={{ color: 'white' }}
+            title="FX rate feed UK"
+            subtitle="Last Updated @"
+          />
+
+          <Card.Content>
+            <FAB
+              style={styles.fab}
+              large
+              icon="update"
+              loading={this.state.loading}
+              onPress={() => this.updateFeed()}
+            />
+          </Card.Content>
+        </Card>
+
+        <ScrollView style={styles.home}>
+          {/* <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} /> */}
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -66,7 +100,7 @@ const Stack = createStackNavigator();
 
 function App() {
   return (
-    <PaperProvider>
+    <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
