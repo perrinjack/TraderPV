@@ -18,6 +18,12 @@ export class Dashboard extends React.Component {
     this.handleSubmit();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.toggle !== prevProps.toggle) {
+      this.handleSubmit();
+    }
+  }
+
   handleSubmit = () => {
     axios
       .get(
@@ -25,6 +31,7 @@ export class Dashboard extends React.Component {
       )
       .then((res) => {
         console.log(res.data);
+        console.log('Updated');
         this.setState({
           data: [res.data],
         });
