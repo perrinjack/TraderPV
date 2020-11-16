@@ -27,7 +27,7 @@ export class Dashboard extends React.Component {
   handleSubmit = () => {
     axios
       .get(
-        `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${this.props.from}&to_currency=${this.props.to}&apikey=7ECA0DL4Z1Q6NGD1`
+        `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${this.props.from}&to_currency=${this.props.to}&apikey=${apiKey}`
       )
       .then((res) => {
         console.log(res.data);
