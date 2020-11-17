@@ -46,7 +46,10 @@ export class DetailsScreen extends React.Component {
       <SafeAreaView style={styles.topbackdrop}>
         <ScrollView>
           <Card>
-            <Card.Title title="USD // Eur pair " />
+            <Card.Title
+              title="USD / EUR"
+              subtitle="United States Dollar / Euro"
+            />
           </Card>
           <Card>
             <Card.Title title="Daily Rates " />
