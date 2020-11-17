@@ -46,7 +46,19 @@ export class Dashboard extends React.Component {
     return (
       this.state.loaded && (
         <View>
-          <Card style={styles.surface} onPress={() => this.props.navigation.push('Details')}>
+          <Card
+            style={styles.surface}
+            onPress={() =>
+              this.props.navigation.navigate('Details', {
+                fromCode: this.state.data[0]['Realtime Currency Exchange Rate'][
+                  '1. From_Currency Code'
+                ],
+                toCode: this.state.data[0]['Realtime Currency Exchange Rate'][
+                  '3. To_Currency Code'
+                ],
+              })
+            }
+          >
             <Card.Content>
               <Title>
                 {

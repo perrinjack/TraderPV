@@ -8,7 +8,15 @@ import { Surface, Text, Card, Title, Paragraph } from 'react-native-paper';
 export function MockDashboard(props) {
   return (
     <View>
-      <Card style={styles.surface} onPress={() => props.navigation.push('Details')}>
+      <Card
+        style={styles.surface}
+        onPress={() =>
+          props.navigation.navigate('Details', {
+            fromCode: 'USD',
+            toCode: 'JPY',
+          })
+        }
+      >
         <Card.Content>
           <Title>{props.title}</Title>
 

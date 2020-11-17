@@ -64,7 +64,7 @@ const ThirdRoute = () => (
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-export function DetailsScreen() {
+export function DetailsScreen(props) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Daily' },
@@ -72,6 +72,7 @@ export function DetailsScreen() {
     { key: 'third', title: 'Yearly' },
   ]);
 
+  const { fromCode, toCode } = props.route.params;
   const renderScene = SceneMap({
     first: FirstRoute,
     second: SecondRoute,
@@ -83,7 +84,7 @@ export function DetailsScreen() {
       <ScrollView>
         <Card>
           <Card.Title
-            title="USD / EUR"
+            title={`${fromCode} / ${toCode}`}
             subtitle="United States Dollar / Euro"
           />
         </Card>
