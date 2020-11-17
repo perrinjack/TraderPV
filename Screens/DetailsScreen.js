@@ -35,28 +35,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const FirstRoute = () => (
+const FirstRoute = (props) => (
   <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
     <Card>
-      <Card.Title title="Daily Rates " />
-      <Chart />
-    </Card>
-  </View>
-);
-
-const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
-    <Card>
-      <Card.Title title="Monthly Rates " />
-      <Chart />
-    </Card>
-  </View>
-);
-
-const ThirdRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
-    <Card>
-      <Card.Title title="Yearly Rates " />
+      <Card.Title title={`${props.title}`} />
       <Chart />
     </Card>
   </View>
@@ -73,11 +55,18 @@ export function DetailsScreen(props) {
   ]);
 
   const { fromCode, toCode, fromCodeFull, toCodeFull } = props.route.params;
-  const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-    third: ThirdRoute,
-  });
+  const renderScene = ({ route }) => {
+    switch (route.key) {
+      case 'first':
+        return <FirstRoute title={'Daily Rates'} />;
+      case 'second':
+        return <FirstRoute title={'Monthly Rates'} />;
+      case 'third':
+        return <FirstRoute title={'Yearly Rates'} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <SafeAreaView style={styles.topbackdrop}>
