@@ -39,7 +39,16 @@ const FirstRoute = (props) => (
   <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
     <Card>
       <Card.Title title={`${props.title}`} />
-      <Chart />
+      <Chart data={[56, 0, 78, 89, 76, 56]} />
+    </Card>
+  </View>
+);
+
+const SecondRoute = (props) => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+    <Card>
+      <Card.Title title={`${props.title}`} />
+      <Chart data={[45, 67, 89, 78, 65, 44]} />
     </Card>
   </View>
 );
@@ -60,7 +69,7 @@ export function DetailsScreen(props) {
       case 'first':
         return <FirstRoute title={'Daily Rates'} />;
       case 'second':
-        return <FirstRoute title={'Monthly Rates'} />;
+        return <SecondRoute title={'Monthly Rates'} />;
       case 'third':
         return <FirstRoute title={'Yearly Rates'} />;
       default:

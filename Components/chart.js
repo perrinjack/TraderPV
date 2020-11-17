@@ -30,7 +30,7 @@ export class Chart extends React.Component {
   render() {
     return (
       <LineChart
-        data={data}
+        data={data(this.props.data)}
         width={this.state.width}
         height={220}
         chartConfig={chartConfig}
@@ -53,14 +53,16 @@ const chartConfig = {
   useShadowColorFromDataset: true, // optional
 };
 
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-  datasets: [
-    {
-      data: [20, 45, 28, 80, 99, 43],
-      color: (opacity = 1) => `#4169e1`, // optional
-      strokeWidth: 2, // optional
-    },
-  ],
-  legend: ['Exchange Rate'], // optional
+const data = (data_in) => {
+  return {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [
+      {
+        data: data_in,
+        color: (opacity = 1) => `#4169e1`, // optional
+        strokeWidth: 2, // optional
+      },
+    ],
+    legend: ['Exchange Rate'], // optional
+  };
 };
