@@ -46,7 +46,7 @@ export class Dashboard extends React.Component {
     return (
       this.state.loaded && (
         <View>
-          <Card style={styles.surface}>
+          <Card style={styles.surface} onPress={() => this.props.navigation.push('Details')}>
             <Card.Content>
               <Title>
                 {

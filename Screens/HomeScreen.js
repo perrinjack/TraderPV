@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
 import { Button } from 'react-native';
 import { MockDashboard } from '../Components/mockDashboard';
+import { Dashboard } from '../Components/dashboard';
 import { Card } from 'react-native-paper';
 import { Chart } from '../Components/chart';
 import { FAB } from 'react-native-paper';
@@ -70,7 +71,7 @@ export class HomeScreen extends React.Component {
         </Card>
 
         <ScrollView style={styles.home}>
-          {/* <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} /> */}
+          <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} navigation={this.props.navigation} />
 
           <MockDashboard
             navigation={this.props.navigation}
