@@ -8,7 +8,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-
+import { TabView, SceneMap } from 'react-native-tab-view';
 import { MockDashboard } from '../Components/mockDashboard';
 import { Card } from 'react-native-paper';
 import { Chart } from '../Components/chart';
@@ -30,33 +30,70 @@ const styles = StyleSheet.create({
   topbackdrop: {
     backgroundColor: '#1d2238',
   },
+  scene: {
+    flex: 1,
+  },
 });
 
-export class DetailsScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      updateToggle: false,
-      loading: false,
-    };
-  }
+const FirstRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+    <Card>
+      <Card.Title title="Daily Rates " />
+      <Chart />
+    </Card>
+  </View>
+);
 
-  render() {
-    return (
-      <SafeAreaView style={styles.topbackdrop}>
-        <ScrollView>
-          <Card>
-            <Card.Title
-              title="USD / EUR"
-              subtitle="United States Dollar / Euro"
-            />
-          </Card>
-          <Card>
-            <Card.Title title="Daily Rates " />
-            <Chart />
-          </Card>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
+const SecondRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+    <Card>
+      <Card.Title title="Monthly Rates " />
+      <Chart />
+    </Card>
+  </View>
+);
+
+const ThirdRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+    <Card>
+      <Card.Title title="Yearly Rates " />
+      <Chart />
+    </Card>
+  </View>
+);
+
+const initialLayout = { width: Dimensions.get('window').width };
+
+export function DetailsScreen() {
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'first', title: 'Daily' },
+    { key: 'second', title: 'Monthly' },
+    { key: 'third', title: 'Yearly' },
+  ]);
+
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+    third: ThirdRoute,
+  });
+
+  return (
+    <SafeAreaView style={styles.topbackdrop}>
+      <ScrollView>
+        <Card>
+          <Card.Title
+            title="USD / EUR"
+            subtitle="United States Dollar / Euro"
+          />
+        </Card>
+        <TabView
+          navigationState={{ index, routes }}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={initialLayout}
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
