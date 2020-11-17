@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   topbackdrop: {
     backgroundColor: '#1d2238',
+    flex: 1
   },
   backdrop: {
     backgroundColor: 'lightgray',
@@ -71,8 +72,18 @@ export class HomeScreen extends React.Component {
         </Card>
 
         <ScrollView style={styles.home}>
-          <Dashboard from={'USD'} to={'JPY'} toggle={this.state.updateToggle} navigation={this.props.navigation} />
-
+          <Dashboard
+            from={'USD'}
+            to={'JPY'}
+            toggle={this.state.updateToggle}
+            navigation={this.props.navigation}
+          />
+          {/* <Dashboard
+            from={'GBP'}
+            to={'EUR'}
+            toggle={this.state.updateToggle}
+            navigation={this.props.navigation}
+          /> */}
           <MockDashboard
             navigation={this.props.navigation}
             title={'USD / GBP'}
