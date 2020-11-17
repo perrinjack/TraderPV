@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Text } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import {
   LineChart,
   PieChart,
@@ -7,29 +7,45 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-const screenWidth = Dimensions.get('window').width;
+const screen = Dimensions.get('screen').width;
 
 export class Chart extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { width: Dimensions.get('screen').width };
   }
+  componentDidMount() {
+    Dimensions.addEventListener('change', this.onChange);
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener('change', this.onChange);
+  }
+
+  onChange = ({ screen }) => {
+    this.setState({ width: Dimensions.get('screen').width });
+    console.log('Changed');
+  };
+
   render() {
     return (
       <LineChart
         data={data}
-        width={screenWidth}
+        width={this.state.width}
         height={220}
         chartConfig={chartConfig}
         bezier
+        // yAxisLabel="$"
+        yAxisSuffix="p"
       />
     );
   }
 }
 
 const chartConfig = {
-  backgroundGradientFrom: '#1E2923',
+  backgroundGradientFrom: '#1d2238',
   backgroundGradientFromOpacity: 0,
-  backgroundGradientTo: '#08130D',
+  backgroundGradientTo: '#1d2238',
   backgroundGradientToOpacity: 0.5,
   color: (opacity = 1) => `#4169e1`,
   strokeWidth: 2, // optional, default 3
@@ -46,5 +62,5 @@ const data = {
       strokeWidth: 2, // optional
     },
   ],
-  legend: ['Rainy Days'], // optional
+  legend: ['Exchange Rate'], // optional
 };

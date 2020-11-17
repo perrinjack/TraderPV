@@ -44,13 +44,15 @@ export class DetailsScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.topbackdrop}>
-        <Card>
-          <Card.Title title="USD // Eur pair " />
-        </Card>
-        <Card>
-          <Card.Title title="Daily Rates " />
-          <Chart />
-        </Card>
+        <ScrollView>
+          <Card>
+            <Card.Title title="USD // Eur pair " />
+          </Card>
+          <Card>
+            <Card.Title title="Daily Rates " />
+            <Chart />
+          </Card>
+        </ScrollView>
       </SafeAreaView>
     );
   }
