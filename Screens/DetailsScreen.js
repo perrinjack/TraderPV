@@ -72,7 +72,7 @@ export function DetailsScreen(props) {
     { key: 'third', title: 'Yearly' },
   ]);
 
-  const { fromCode, toCode } = props.route.params;
+  const { fromCode, toCode, fromCodeFull, toCodeFull } = props.route.params;
   const renderScene = SceneMap({
     first: FirstRoute,
     second: SecondRoute,
@@ -85,7 +85,7 @@ export function DetailsScreen(props) {
         <Card>
           <Card.Title
             title={`${fromCode} / ${toCode}`}
-            subtitle="United States Dollar / Euro"
+            subtitle={`${fromCodeFull} / ${toCodeFull}`}
           />
         </Card>
         <TabView

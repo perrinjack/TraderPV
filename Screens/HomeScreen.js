@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   topbackdrop: {
     backgroundColor: '#1d2238',
-    flex: 1
+    flex: 1,
   },
   backdrop: {
     backgroundColor: 'lightgray',
@@ -78,36 +78,36 @@ export class HomeScreen extends React.Component {
             toggle={this.state.updateToggle}
             navigation={this.props.navigation}
           />
-          {/* <Dashboard
+          <Dashboard
             from={'GBP'}
             to={'EUR'}
             toggle={this.state.updateToggle}
             navigation={this.props.navigation}
+          />
+          {/* <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
+          />
+          <MockDashboard
+            navigation={this.props.navigation}
+            title={'USD / GBP'}
           /> */}
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
         </ScrollView>
       </SafeAreaView>
     );

@@ -56,6 +56,12 @@ export class Dashboard extends React.Component {
                 toCode: this.state.data[0]['Realtime Currency Exchange Rate'][
                   '3. To_Currency Code'
                 ],
+                fromCodeFull: this.state.data[0][
+                  'Realtime Currency Exchange Rate'
+                ]['2. From_Currency Name'],
+                toCodeFull: this.state.data[0][
+                  'Realtime Currency Exchange Rate'
+                ]['4. To_Currency Name'],
               })
             }
           >
