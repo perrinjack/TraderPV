@@ -1,16 +1,9 @@
 import React from 'react';
 
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  SafeAreaView,
-  Text,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Card } from 'react-native-paper';
-import { Chart } from '.../Components/chart';
+import { Chart } from '../../Components/chart';
 
 const styles = StyleSheet.create({
   scene: {

@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
   scene: {
     flex: 1,
   },
+  topbackdrop: {
+    backgroundColor: '#1d2238',
+    flex: 1,
+  },
 });
 
 const initialLayout = { width: Dimensions.get('window').width };

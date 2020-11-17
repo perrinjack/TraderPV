@@ -55,7 +55,7 @@ const chartConfig = {
 
 const data = (data_in) => {
   return {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    
     datasets: [
       {
         data: data_in,
