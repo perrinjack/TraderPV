@@ -50,20 +50,21 @@ export class HomeScreen extends React.Component {
     );
   }
 
-  pollApi() {
-    setTimeout(
-      function () {
-        this.setState({ updateToggle: !this.state.updateToggle });
-        this.pollApi();
-      }.bind(this),
-      300000
-    );
-  }
+  // pollApi() {
+  //   setTimeout(
+  //     function () {
+  //       this.setState({ updateToggle: !this.state.updateToggle });
+  //       this.pollApi();
+  //     }.bind(this),
+  //     60000
+  //   );
+  //   console.log('POLLED');
+  // }
 
-  componentDidMount() {
-    console.log('MOUNTED');
-    this.pollApi(); //Polling of api.
-  }
+  // componentDidMount() {
+  //   console.log('MOUNTED');
+  //   this.pollApi(); //Polling of api.
+  // }
 
   render() {
     return (
