@@ -50,6 +50,21 @@ export class HomeScreen extends React.Component {
     );
   }
 
+  pollApi() {
+    setTimeout(
+      function () {
+        this.setState({ updateToggle: !this.state.updateToggle });
+        this.pollApi();
+      }.bind(this),
+      300000
+    );
+  }
+
+  componentDidMount() {
+    console.log('MOUNTED');
+    this.pollApi(); //Polling of api.
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.topbackdrop}>

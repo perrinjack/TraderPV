@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import {
@@ -46,6 +45,7 @@ function App() {
             style: {},
           }}
           screenOptions={({ route }) => ({
+            unmountOnBlur: true,
             tabBarIcon: ({ focused, size }) => {
               let iconName;
               let color = '#3498db';
