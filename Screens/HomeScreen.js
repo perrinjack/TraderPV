@@ -116,22 +116,6 @@ export class HomeScreen extends React.Component {
     );
   };
 
-  // pollApi() {
-  //   setTimeout(
-  //     function () {
-  //       this.setState({ updateToggle: !this.state.updateToggle });
-  //       this.pollApi();
-  //     }.bind(this),
-  //     60000
-  //   );
-  //   console.log('POLLED');
-  // }
-
-  // componentDidMount() {
-  //   console.log('MOUNTED');
-  //   this.pollApi(); //Polling of api.
-  // }
-
   render() {
     return (
       <SafeAreaView style={styles.topbackdrop}>
@@ -141,16 +125,6 @@ export class HomeScreen extends React.Component {
             title="Your FX rate feed "
             subtitle="Last Updated @"
           />
-
-          {/* <Card.Content>
-            <FAB
-              style={styles.fab}
-              large
-              icon="update"
-              loading={this.state.loading}
-              onPress={() => this.updateFeed()}
-            />
-          </Card.Content> */}
         </Card>
 
         <FlatList
