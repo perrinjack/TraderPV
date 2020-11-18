@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Text,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 import { Button } from 'react-native';
 import { MockDashboard } from '../Components/mockDashboard';
@@ -111,7 +112,7 @@ export class HomeScreen extends React.Component {
       function () {
         this.setState({ loading: false });
       }.bind(this),
-      2000
+      1000
     );
   };
 
@@ -141,7 +142,7 @@ export class HomeScreen extends React.Component {
             subtitle="Last Updated @"
           />
 
-          <Card.Content>
+          {/* <Card.Content>
             <FAB
               style={styles.fab}
               large
@@ -149,7 +150,7 @@ export class HomeScreen extends React.Component {
               loading={this.state.loading}
               onPress={() => this.updateFeed()}
             />
-          </Card.Content>
+          </Card.Content> */}
         </Card>
 
         <FlatList
@@ -157,8 +158,15 @@ export class HomeScreen extends React.Component {
           data={DATA}
           renderItem={this.renderItem}
           keyExtractor={(item) => item.id}
-          refreshing={this.state.loading}
-          onRefresh={this.updateFeed}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.loading}
+              onRefresh={this.updateFeed}
+              title="Updating your feed"
+              tintColor="#fff"
+              titleColor="#fff"
+            />
+          }
         />
 
         {/* <MockDashboard
