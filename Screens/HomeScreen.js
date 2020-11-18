@@ -1,12 +1,67 @@
 import React from 'react';
 
-import { StyleSheet, View, ScrollView, SafeAreaView, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Text,
+  FlatList,
+} from 'react-native';
 import { Button } from 'react-native';
 import { MockDashboard } from '../Components/mockDashboard';
 import { Dashboard } from '../Components/dashboard';
 import { Card } from 'react-native-paper';
 import { Chart } from '../Components/chart';
 import { FAB } from 'react-native-paper';
+
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    from: 'USD',
+    to: 'EUR',
+  },
+  {
+    id: 'bd7acbea-c1b1-46-ae3ad5',
+    from: 'USD',
+    to: 'JPY',
+  },
+  // {
+  //   id: 'bd7acbea-c46c2-a-3ad',
+  //   from: 'GBP',
+  //   to: 'USD',
+  // },
+  // {
+  //   id: 'bd7acbb1-46c2-aed5-3ad53abb28ba',
+  //   from: 'USD',
+  //   to: 'CAD',
+  // },
+  // {
+  //   id: 'bd7acbea-c-ae3ad5',
+  //   from: 'USD',
+  //   to: 'EUR',
+  // },
+  // {
+  //   id: 'bd7acbea-d5-3ad',
+  //   from: 'AUD',
+  //   to: 'USD',
+  // },
+  // {
+  //   id: 'bd7acbea-c1b1-46c2-aed5-abb28ba',
+  //   from: 'GBP',
+  //   to: 'CHF',
+  // },
+  // {
+  //   id: 'bda-c1b1-46c2-ae3ad5',
+  //   from: 'NZD',
+  //   to: 'EUR',
+  // },
+  // {
+  //   id: 'bd7cbea-c46c2-aed5-3ad',
+  //   from: 'AUD',
+  //   to: 'JPY',
+  // },
+];
 
 const styles = StyleSheet.create({
   home: {
@@ -39,16 +94,26 @@ export class HomeScreen extends React.Component {
     };
   }
 
-  updateFeed() {
+  renderItem = ({ item }) => (
+    <Dashboard
+      from={item.from}
+      to={item.to}
+      toggle={this.state.updateToggle}
+      navigation={this.props.navigation}
+    />
+  );
+
+  updateFeed = () => {
     this.setState({ loading: true });
     this.setState({ updateToggle: !this.state.updateToggle });
+    console.log('Updated feed');
     setTimeout(
       function () {
         this.setState({ loading: false });
       }.bind(this),
       2000
     );
-  }
+  };
 
   // pollApi() {
   //   setTimeout(
@@ -87,20 +152,16 @@ export class HomeScreen extends React.Component {
           </Card.Content>
         </Card>
 
-        <ScrollView style={styles.home}>
-          <Dashboard
-            from={'USD'}
-            to={'JPY'}
-            toggle={this.state.updateToggle}
-            navigation={this.props.navigation}
-          />
-          <Dashboard
-            from={'GBP'}
-            to={'EUR'}
-            toggle={this.state.updateToggle}
-            navigation={this.props.navigation}
-          />
-          {/* <MockDashboard
+        <FlatList
+          style={styles.home}
+          data={DATA}
+          renderItem={this.renderItem}
+          keyExtractor={(item) => item.id}
+          refreshing={this.state.loading}
+          onRefresh={this.updateFeed}
+        />
+
+        {/* <MockDashboard
             navigation={this.props.navigation}
             title={'USD / GBP'}
           />
@@ -124,7 +185,6 @@ export class HomeScreen extends React.Component {
             navigation={this.props.navigation}
             title={'USD / GBP'}
           /> */}
-        </ScrollView>
       </SafeAreaView>
     );
   }

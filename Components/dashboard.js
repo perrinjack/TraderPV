@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-native';
-import apiKey from '../apiKey.js';
+import { apiKey } from '../apiKey.js';
 import axios from 'axios';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { Surface, Text, Card, Title, Paragraph } from 'react-native-paper';
@@ -31,6 +31,7 @@ export class Dashboard extends React.Component {
       )
       .then((res) => {
         console.log(res.data);
+
         console.log('Updated');
         this.setState({
           data: [res.data],
