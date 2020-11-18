@@ -38,11 +38,17 @@ export function DetailsScreen(props) {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'first':
-        return <FirstRoute title={'Daily Rates'} />;
+        return (
+          <FirstRoute
+            title={'Daily Rates'}
+            fromCode={fromCode}
+            toCode={toCode}
+          />
+        );
       case 'second':
         return <SecondRoute title={'Monthly Rates'} />;
       case 'third':
-        return <FirstRoute title={'Yearly Rates'} />;
+        return <SecondRoute title={'Yearly Rates'} />;
       default:
         return null;
     }
@@ -50,20 +56,18 @@ export function DetailsScreen(props) {
 
   return (
     <SafeAreaView style={styles.topbackdrop}>
-      <ScrollView>
-        <Card>
-          <Card.Title
-            title={`${fromCode} / ${toCode}`}
-            subtitle={`${fromCodeFull} / ${toCodeFull}`}
-          />
-        </Card>
-        <TabView
-          navigationState={{ index, routes }}
-          renderScene={renderScene}
-          onIndexChange={setIndex}
-          initialLayout={initialLayout}
+      <Card>
+        <Card.Title
+          title={`${fromCode} / ${toCode}`}
+          subtitle={`${fromCodeFull} / ${toCodeFull}`}
         />
-      </ScrollView>
+      </Card>
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={initialLayout}
+      />
     </SafeAreaView>
   );
 }
