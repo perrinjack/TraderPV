@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { Dimensions, Text, View, StyleSheet } from 'react-native';
 import {
   LineChart,
   PieChart,
@@ -7,62 +7,90 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-const screen = Dimensions.get('screen').width;
+// const screen = Dimensions.get('screen').width;
+
+// export class Chart extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { width: Dimensions.get('screen').width };
+//   }
+//   componentDidMount() {
+//     Dimensions.addEventListener('change', this.onChange);
+//   }
+
+//   componentWillUnmount() {
+//     Dimensions.removeEventListener('change', this.onChange);
+//   }
+
+//   onChange = ({ screen }) => {
+//     this.setState({ width: Dimensions.get('screen').width });
+//     console.log('Changed');
+//   };
+
+//   render() {
+//     return (
+//       <LineChart
+//         data={data(this.props.data)}
+//         width={this.state.width}
+//         height={220}
+//         chartConfig={chartConfig}
+//         bezier
+//         // yAxisLabel="$"
+//         yAxisSuffix="p"
+//       />
+//     );
+//   }
+// }
+
+// const chartConfig = {
+//   backgroundGradientFrom: '#1d2238',
+//   backgroundGradientFromOpacity: 0,
+//   backgroundGradientTo: '#1d2238',
+//   backgroundGradientToOpacity: 0.5,
+//   color: (opacity = 1) => `#4169e1`,
+//   strokeWidth: 2, // optional, default 3
+//   barPercentage: 0.5,
+//   useShadowColorFromDataset: true, // optional
+// };
+
+// const data = (data_in) => {
+//   return {
+
+//     datasets: [
+//       {
+//         data: data_in,
+//         color: (opacity = 1) => `#4169e1`, // optional
+//         strokeWidth: 2, // optional
+//       },
+//     ],
+//     legend: ['Exchange Rate'], // optional
+//   };
+// };
+
+import {
+  VictoryScatter,
+  VictoryChart,
+  VictoryTheme,
+  VictoryCursorContainer,
+} from 'victory-native';
 
 export class Chart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { width: Dimensions.get('screen').width };
-  }
-  componentDidMount() {
-    Dimensions.addEventListener('change', this.onChange);
-  }
-
-  componentWillUnmount() {
-    Dimensions.removeEventListener('change', this.onChange);
-  }
-
-  onChange = ({ screen }) => {
-    this.setState({ width: Dimensions.get('screen').width });
-    console.log('Changed');
-  };
-
   render() {
     return (
-      <LineChart
-        data={data(this.props.data)}
-        width={this.state.width}
-        height={220}
-        chartConfig={chartConfig}
-        bezier
-        // yAxisLabel="$"
-        yAxisSuffix="p"
-      />
+      // <View style={styles.container}>
+      <VictoryChart width={350} theme={VictoryTheme.material} containerComponent={<VictoryCursorContainer />}>
+        <VictoryScatter />
+      </VictoryChart>
+      //* </View> */}
     );
   }
 }
 
-const chartConfig = {
-  backgroundGradientFrom: '#1d2238',
-  backgroundGradientFromOpacity: 0,
-  backgroundGradientTo: '#1d2238',
-  backgroundGradientToOpacity: 0.5,
-  color: (opacity = 1) => `#4169e1`,
-  strokeWidth: 2, // optional, default 3
-  barPercentage: 0.5,
-  useShadowColorFromDataset: true, // optional
-};
-
-const data = (data_in) => {
-  return {
-    
-    datasets: [
-      {
-        data: data_in,
-        color: (opacity = 1) => `#4169e1`, // optional
-        strokeWidth: 2, // optional
-      },
-    ],
-    legend: ['Exchange Rate'], // optional
-  };
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5fcff',
+  },
+});
