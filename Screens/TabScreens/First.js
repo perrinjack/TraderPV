@@ -33,7 +33,10 @@ export class FirstRoute extends React.Component {
       )
       .then((res) => {
         this.setState({
-          dataLabels: Object.keys(res.data['Time Series FX (Daily)']).slice(1, 9),
+          dataLabels: Object.keys(res.data['Time Series FX (Daily)']).slice(
+            1,
+            9
+          ),
 
           data: [res.dat],
         });
@@ -41,7 +44,7 @@ export class FirstRoute extends React.Component {
   };
   render() {
     return (
-      <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+      <View>
         <Card>
           <Card.Title title={`${this.props.title}`} />
           <Chart
