@@ -67,35 +67,69 @@ export class Dashboard extends React.Component {
             }
           >
             <Card.Content>
-              <Title>
-                {
-                  this.state.data[0]['Realtime Currency Exchange Rate'][
-                    '1. From_Currency Code'
-                  ]
-                }{' '}
-                to{' '}
-                {
-                  this.state.data[0]['Realtime Currency Exchange Rate'][
-                    '3. To_Currency Code'
-                  ]
-                }
-              </Title>
+              <View style={styles.row}>
+                <Title>
+                  {
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '1. From_Currency Code'
+                    ]
+                  }{' '}
+                  /{' '}
+                  {
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '3. To_Currency Code'
+                    ]
+                  }
+                </Title>
+                
+              </View>
+              {/* <View style={styles.updaterow}>
+                <Paragraph>
+                  {
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '2. From_Currency Name'
+                    ]
+                  }{' '}
+                  /{' '}
+                  {
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '4. To_Currency Name'
+                    ]
+                  }
+                </Paragraph>
+              </View> */}
+              <View style={styles.numberrow}>
+                <View style={styles.bidcolumn}>
+                <Text>Bid Price:  {parseFloat(
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '8. Bid Price'
+                    ]
+                  )}</Text>
+                <Text>Ask Price: {parseFloat(
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '9. Ask Price'
+                    ]
+                  )} </Text>
+                </View>
+                <Text style={styles.number}>
+                  {parseFloat(
+                    this.state.data[0]['Realtime Currency Exchange Rate'][
+                      '5. Exchange Rate'
+                    ]
+                  )}
+                </Text>
+              </View>
 
-              <Paragraph>
-                {
-                  this.state.data[0]['Realtime Currency Exchange Rate'][
-                    '5. Exchange Rate'
-                  ]
-                }
-              </Paragraph>
-              <Paragraph>
+              
+
+              {/* <Paragraph>
                 Last Updated:
                 {
                   this.state.data[0]['Realtime Currency Exchange Rate'][
                     '6. Last Refreshed'
                   ]
                 }
-              </Paragraph>
+              </Paragraph> */}
             </Card.Content>
           </Card>
         </View>
@@ -111,4 +145,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#4169e1',
     marginVertical: 6,
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  numberrow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1.5,
+    borderBottomColor: 'white',
+    paddingBottom: 20
+  },
+  bidcolumn: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  number: {
+    fontSize: 35,
+  },
+  bidtext: {
+    fontSize: 21,
+
+  }
 });
