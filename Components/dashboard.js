@@ -3,7 +3,14 @@ import { SafeAreaView } from 'react-native';
 import { apiKey } from '../apiKey.js';
 import axios from 'axios';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import { Surface, Text, Card, Title, Paragraph } from 'react-native-paper';
+import {
+  Surface,
+  Text,
+  Card,
+  Title,
+  Paragraph,
+  IconButton,
+} from 'react-native-paper';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -66,7 +73,10 @@ export class Dashboard extends React.Component {
               })
             }
           >
+            
+            
             <Card.Content>
+            <View><IconButton style={styles.button} color={'white'} icon="close"></IconButton></View>
               <View style={styles.row}>
                 <Title>
                   {
@@ -81,7 +91,6 @@ export class Dashboard extends React.Component {
                     ]
                   }
                 </Title>
-                
               </View>
               {/* <View style={styles.updaterow}>
                 <Paragraph>
@@ -100,16 +109,22 @@ export class Dashboard extends React.Component {
               </View> */}
               <View style={styles.numberrow}>
                 <View style={styles.bidcolumn}>
-                <Text>Bid Price:  {parseFloat(
-                    this.state.data[0]['Realtime Currency Exchange Rate'][
-                      '8. Bid Price'
-                    ]
-                  )}</Text>
-                <Text>Ask Price: {parseFloat(
-                    this.state.data[0]['Realtime Currency Exchange Rate'][
-                      '9. Ask Price'
-                    ]
-                  )} </Text>
+                  <Text>
+                    Bid Price:{' '}
+                    {parseFloat(
+                      this.state.data[0]['Realtime Currency Exchange Rate'][
+                        '8. Bid Price'
+                      ]
+                    )}
+                  </Text>
+                  <Text>
+                    Ask Price:{' '}
+                    {parseFloat(
+                      this.state.data[0]['Realtime Currency Exchange Rate'][
+                        '9. Ask Price'
+                      ]
+                    )}{' '}
+                  </Text>
                 </View>
                 <Text style={styles.number}>
                   {parseFloat(
@@ -119,8 +134,6 @@ export class Dashboard extends React.Component {
                   )}
                 </Text>
               </View>
-
-              
 
               {/* <Paragraph>
                 Last Updated:
@@ -154,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1.5,
     borderBottomColor: 'white',
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   bidcolumn: {
     flexDirection: 'column',
@@ -165,6 +178,13 @@ const styles = StyleSheet.create({
   },
   bidtext: {
     fontSize: 21,
+  },
+  button: {
+    // alignSelf: 'flex-end',
+    color: 'white',
+    right: -25,
+    top: -20,
 
-  }
+    position: 'absolute',
+  },
 });
