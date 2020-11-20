@@ -32,14 +32,10 @@ export class FirstRoute extends React.Component {
         `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.fromCode}&to_symbol=${this.props.toCode}&outputsize=compact&apikey=${apiKey}`
       )
       .then((res) => {
-        this.setState({
-          dataLabels: Object.keys(res.data['Time Series FX (Daily)']).slice(
-            1,
-            9
-          ),
-
-          data: [res.dat],
-        });
+        // console.log(res.data)
+        // console.log(Object.keys(res.data["Time Series FX (Daily)"]))
+        this.setState({data: Object.keys(res.data["Time Series FX (Daily)"]).map(date => ({x: new Date(date), y: res.data["Time Series FX (Daily)"][date].["4. close"]}))})
+        
       });
   };
   render() {
@@ -48,7 +44,7 @@ export class FirstRoute extends React.Component {
         <Card>
           <Card.Title title={`${this.props.title}`} />
           <Chart
-            data={[56, 0, 78, 89, 76, 56, 65, 76, 86, 98]}
+            data={this.state.data}
             labels={this.state.dataLabels}
           />
         </Card>

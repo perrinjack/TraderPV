@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 });
 
 export const SecondRoute = (props) => (
-  <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+  <View>
     <Card>
       <Card.Title title={`${props.title}`} />
       <Chart data={[45, 67, 89, 78, 65, 44]} />

@@ -1,18 +1,7 @@
 import React from 'react';
 import { List } from 'react-native-paper';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  SafeAreaView,
-  Text,
-  FlatList,
-  RefreshControl,
-  Switch,
-} from 'react-native';
+import { StyleSheet, View, SafeAreaView, FlatList, Switch } from 'react-native';
 
-import { MockDashboard } from '../Components/mockDashboard';
-import { Dashboard } from '../Components/dashboard';
 import { Card, Button } from 'react-native-paper';
 
 const DATA = [
@@ -20,7 +9,7 @@ const DATA = [
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     from: 'USD',
     to: 'EUR',
-    shown: false,
+    shown: true,
   },
   {
     id: 'bd7acbea-c1b1-46-ae3ad5',
@@ -32,7 +21,7 @@ const DATA = [
     id: 'bd7acbea-c46c2-a-3ad',
     from: 'GBP',
     to: 'USD',
-    shown: false,
+    shown: true,
   },
   {
     id: 'bd7acbb1-46c2-aed5-3ad53abb28ba',

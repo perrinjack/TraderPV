@@ -78,17 +78,15 @@ import {
   LineSegment,
   VictoryBrushLine,
 } from 'victory-native';
-
+import Spinner from 'react-native-loading-spinner-overlay';
 const VictoryZoomVoronoiContainer = createContainer('zoom', 'voronoi');
 export class Chart extends React.Component {
   render() {
-    return (
+    return this.props.data ? (
       // <View style={styles.container}>
       <VictoryChart
         scale={{ x: 'time' }}
         theme={VictoryTheme.material}
-        minDomain={{ y: 1.15 }}
-        maxDomain={{ y: 1.2 }}
         fixLabelOverlap={true}
         // containerComponent={
         //   <VictoryZoomVoronoiContainer
@@ -101,6 +99,7 @@ export class Chart extends React.Component {
           style={{
             grid: { stroke: '#718096', strokeDasharray: '2' },
           }}
+          fixLabelOverlap={true}
         />
         <VictoryAxis
           fixLabelOverlap={true}
@@ -113,30 +112,16 @@ export class Chart extends React.Component {
             data: { stroke: '#c43a31' },
             parent: { border: '1px solid #ccc' },
           }}
-          data={[
-            { x: new Date('2020-11-19'), y: 1.1768 },
-            { x: new Date('2020-11-18'), y: 1.1868 },
-            { x: new Date('2020-11-17'), y: 1.1861 },
-            { x: new Date('2020-11-16'), y: 1.185 },
-            { x: new Date('2020-11-15'), y: 1.1868 },
-            { x: new Date('2020-11-14'), y: 1.1861 },
-            { x: new Date('2020-11-13'), y: 1.185 },
-            { x: new Date('2020-11-12'), y: 1.185 },
-            { x: new Date('2020-11-11'), y: 1.185 },
-            { x: new Date('2020-11-10'), y: 1.185 },
-            { x: new Date('2020-11-09'), y: 1.185 },
-            { x: new Date('2020-11-08'), y: 1.185 },
-            { x: new Date('2020-11-07'), y: 1.185 },
-            { x: new Date('2020-11-06'), y: 1.185 },
-            { x: new Date('2020-11-05'), y: 1.185 },
-            { x: new Date('2020-11-04'), y: 1.185 },
-            { x: new Date('2020-11-03'), y: 1.185 },
-            { x: new Date('2020-11-02'), y: 1.185 },
-            { x: new Date('2020-11-01'), y: 1.185 },
-          ]}
+          data={this.props.data.slice(1, 30)}
         />
       </VictoryChart>
+    ) : (
       //* </View> */}
+      <Spinner
+        visible={true}
+        textContent={'Loading...'}
+        textStyle={styles.spinnerTextStyle}
+      />
     );
   }
 }
@@ -147,5 +132,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f5fcff',
+  },
+  spinnerTextStyle: {
+    color: '#FFF',
   },
 });
