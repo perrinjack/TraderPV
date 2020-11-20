@@ -112,7 +112,7 @@ export class Chart extends React.Component {
             data: { stroke: '#c43a31' },
             parent: { border: '1px solid #ccc' },
           }}
-          data={this.props.data.slice(1, 30)}
+          data={this.props.data}
         />
       </VictoryChart>
     ) : (

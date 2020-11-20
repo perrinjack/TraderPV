@@ -34,7 +34,7 @@ export class FirstRoute extends React.Component {
       .then((res) => {
         // console.log(res.data)
         // console.log(Object.keys(res.data["Time Series FX (Daily)"]))
-        this.setState({data: Object.keys(res.data["Time Series FX (Daily)"]).map(date => ({x: new Date(date), y: res.data["Time Series FX (Daily)"][date].["4. close"]}))})
+        this.setState({data: Object.keys(res.data["Time Series FX (Daily)"]).map(date => ({x: new Date(date), y: parseFloat(res.data["Time Series FX (Daily)"][date].["4. close"])}))})
         
       });
   };
