@@ -15,104 +15,41 @@ import { MockDashboard } from '../Components/mockDashboard';
 import { Dashboard } from '../Components/dashboard';
 import { Card, Button } from 'react-native-paper';
 
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    from: 'USD',
+    to: 'EUR',
+    shown: false,
+  },
+  {
+    id: 'bd7acbea-c1b1-46-ae3ad5',
+    from: 'USD',
+    to: 'JPY',
+    shown: true,
+  },
+  {
+    id: 'bd7acbea-c46c2-a-3ad',
+    from: 'GBP',
+    to: 'USD',
+    shown: false,
+  },
+  {
+    id: 'bd7acbb1-46c2-aed5-3ad53abb28ba',
+    from: 'USD',
+    to: 'CAD',
+    shown: false,
+  },
+  {
+    id: 'bd7acbea-c-ae3ad5',
+    from: 'USD',
+    to: 'EUR',
+    shown: true,
+  },
+];
+
 export const SettingsStack = () => {
-  return (
-    <SafeAreaView style={styles.topbackdrop}>
-      <Card style={styles.titleCard}>
-        <Card.Title
-          titleStyle={{ color: 'white' }}
-          title="Settings "
-          subtitle="Personalise your app here!"
-        />
-      </Card>
-      <ScrollView>
-        <List.Section>
-          <List.Subheader>FX Pairs Displayed</List.Subheader>
-
-          <List.Item
-            style={styles.list}
-            title="USD / JPY"
-            description="United States Dollar / Japanese Yen"
-            left={(props) => <Button mode="text">£ / $ </Button>}
-            right={(props) => (
-              <Switch
-                trackColor={{ false: '#767577', true: '#81b0ff' }}
-                thumbColor={true ? '#f5dd4b' : '#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                // onValueChange={toggleSwitch}
-                value={true}
-              />
-            )}
-          />
-          <List.Item
-            style={styles.list}
-            title="EUR / JPY"
-            description="Euro / Japanese Yen"
-            left={(props) => <Button mode="text">€ / $ </Button>}
-            right={(props) => (
-              <Switch
-                trackColor={{ false: '#767577', true: '#81b0ff' }}
-                thumbColor={true ? '#f5dd4b' : '#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                // onValueChange={toggleSwitch}
-                value={true}
-              />
-            )}
-          />
-          <List.Item
-            style={styles.list}
-            title="USD / GBP"
-            description="United States Dollar / Great British Pound"
-            left={(props) => <Button mode="text">£ / $ </Button>}
-            right={(props) => (
-              <Switch
-                trackColor={{ false: '#767577', true: '#81b0ff' }}
-                thumbColor={true ? '#f5dd4b' : '#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                // onValueChange={toggleSwitch}
-                value={true}
-              />
-            )}
-          />
-        </List.Section>
-
-        <List.Section>
-          <List.Subheader>Crypto Pairs Displayed</List.Subheader>
-
-          <List.Item
-            style={styles.list}
-            title="USD / BTC"
-            description="United States Dollar / Bitcoin"
-            left={(props) => <Button mode="text">$ / BTC </Button>}
-            right={(props) => (
-              <Switch
-                trackColor={{ false: '#767577', true: '#81b0ff' }}
-                thumbColor={true ? '#f5dd4b' : '#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                // onValueChange={toggleSwitch}
-                value={true}
-              />
-            )}
-          />
-          <List.Item
-            style={styles.list}
-            title="GBP / BTC"
-            description="Great British Pound / Bitcoin"
-            left={(props) => <Button mode="text">£ / BTC </Button>}
-            right={(props) => (
-              <Switch
-                trackColor={{ false: '#767577', true: '#81b0ff' }}
-                thumbColor={true ? '#f5dd4b' : '#f4f3f4'}
-                ios_backgroundColor="#3e3e3e"
-                // onValueChange={toggleSwitch}
-                value={true}
-              />
-            )}
-          />
-        </List.Section>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  return <SettingsScreen />;
 };
 
 const styles = StyleSheet.create({
@@ -126,3 +63,57 @@ const styles = StyleSheet.create({
     borderBottomColor: 'grey',
   },
 });
+
+export class SettingsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  renderItem = ({ item }) => {
+    return (
+      <List.Item
+        style={styles.list}
+        title="USD / JPY"
+        description="United States Dollar / Japanese Yen"
+        left={(props) => <Button mode="text">£ / $ </Button>}
+        right={(props) => (
+          <Switch
+            trackColor={{ false: '#767577', true: '#767577' }}
+            thumbColor={item.shown ? 'green' : 'red'}
+            ios_backgroundColor="#767577"
+            // onValueChange={toggleSwitch}
+            value={item.shown}
+          />
+        )}
+      />
+    );
+  };
+
+  renderHeader = ({ item }) => {
+    return <List.Subheader>FX Pairs Displayed</List.Subheader>;
+  };
+
+  render() {
+    return (
+      <SafeAreaView style={styles.topbackdrop}>
+        <Card style={styles.titleCard}>
+          <Card.Title
+            titleStyle={{ color: 'white' }}
+            title="Settings "
+            subtitle="Personalise your app here!"
+          />
+        </Card>
+        <View>
+          <List.Section>
+            <FlatList
+              ListHeaderComponent={this.renderHeader}
+              data={DATA}
+              renderItem={this.renderItem}
+              keyExtractor={(item) => item.id}
+            />
+          </List.Section>
+        </View>
+      </SafeAreaView>
+    );
+  }
+}
