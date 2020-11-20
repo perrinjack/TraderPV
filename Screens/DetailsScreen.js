@@ -31,7 +31,6 @@ export function DetailsScreen(props) {
   const [routes] = React.useState([
     { key: 'first', title: 'Daily' },
     { key: 'second', title: 'Monthly' },
-    { key: 'third', title: 'Yearly' },
   ]);
 
   const { fromCode, toCode, fromCodeFull, toCodeFull } = props.route.params;
@@ -46,9 +45,14 @@ export function DetailsScreen(props) {
           />
         );
       case 'second':
-        return <SecondRoute title={'Monthly Rates'} />;
-      case 'third':
-        return <SecondRoute title={'Yearly Rates'} />;
+        return (
+          <SecondRoute
+            title={'Monthly Rates'}
+            fromCode={fromCode}
+            toCode={toCode}
+          />
+        );
+
       default:
         return null;
     }

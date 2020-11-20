@@ -1,5 +1,5 @@
 import React from 'react';
-
+import moment from 'moment';
 import { StyleSheet, View } from 'react-native';
 import { apiKey } from '../../apiKey.js';
 import axios from 'axios';
@@ -32,10 +32,12 @@ export class FirstRoute extends React.Component {
         `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${this.props.fromCode}&to_symbol=${this.props.toCode}&outputsize=compact&apikey=${apiKey}`
       )
       .then((res) => {
-        // console.log(res.data)
-        // console.log(Object.keys(res.data["Time Series FX (Daily)"]))
-        this.setState({data: Object.keys(res.data["Time Series FX (Daily)"]).map(date => ({x: new Date(date), y: parseFloat(res.data["Time Series FX (Daily)"][date].["4. close"])}))})
-        
+        this.setState({
+          data: Object.keys(res.data['Time Series FX (Daily)']).map((date) => ({
+            x: new Date(date),
+            y: parseFloat(res.data['Time Series FX (Daily)'][date]['4. close']),
+          })),
+        });
       });
   };
   render() {
@@ -43,10 +45,7 @@ export class FirstRoute extends React.Component {
       <View>
         <Card>
           <Card.Title title={`${this.props.title}`} />
-          <Chart
-            data={this.state.data}
-            labels={this.state.dataLabels}
-          />
+          <Chart data={this.state.data} labels={this.state.dataLabels} />
         </Card>
       </View>
     );

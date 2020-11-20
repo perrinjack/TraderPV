@@ -85,6 +85,8 @@ export class Chart extends React.Component {
     return this.props.data ? (
       // <View style={styles.container}>
       <VictoryChart
+      // minDomain={{ y: 0.83 }}
+      //    maxDomain={{ y: 0.89 }}
         scale={{ x: 'time' }}
         theme={VictoryTheme.material}
         fixLabelOverlap={true}
@@ -95,6 +97,7 @@ export class Chart extends React.Component {
         // }
       >
         <VictoryAxis
+         
           dependentAxis
           style={{
             grid: { stroke: '#718096', strokeDasharray: '2' },
