@@ -21,27 +21,32 @@ const DATA = [
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     from: 'USD',
     to: 'EUR',
+    shown: false,
   },
   {
     id: 'bd7acbea-c1b1-46-ae3ad5',
     from: 'USD',
     to: 'JPY',
+    shown: true,
   },
-  // {
-  //   id: 'bd7acbea-c46c2-a-3ad',
-  //   from: 'GBP',
-  //   to: 'USD',
-  // },
-  // {
-  //   id: 'bd7acbb1-46c2-aed5-3ad53abb28ba',
-  //   from: 'USD',
-  //   to: 'CAD',
-  // },
-  // {
-  //   id: 'bd7acbea-c-ae3ad5',
-  //   from: 'USD',
-  //   to: 'EUR',
-  // },
+  {
+    id: 'bd7acbea-c46c2-a-3ad',
+    from: 'GBP',
+    to: 'USD',
+    shown: false,
+  },
+  {
+    id: 'bd7acbb1-46c2-aed5-3ad53abb28ba',
+    from: 'USD',
+    to: 'CAD',
+    shown: false,
+  },
+  {
+    id: 'bd7acbea-c-ae3ad5',
+    from: 'USD',
+    to: 'EUR',
+    shown: true,
+  },
   // {
   //   id: 'bd7acbea-d5-3ad',
   //   from: 'AUD',
@@ -74,9 +79,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
-  titleCard: {
-    height: 90,
-  },
+
   topbackdrop: {
     backgroundColor: '#1d2238',
     flex: 1,
@@ -95,14 +98,15 @@ export class HomeScreen extends React.Component {
     };
   }
 
-  renderItem = ({ item }) => (
-    <Dashboard
-      from={item.from}
-      to={item.to}
-      toggle={this.state.updateToggle}
-      navigation={this.props.navigation}
-    />
-  );
+  renderItem = ({ item }) =>
+    item.shown ? (
+      <Dashboard
+        from={item.from}
+        to={item.to}
+        toggle={this.state.updateToggle}
+        navigation={this.props.navigation}
+      />
+    ) : null;
 
   updateFeed = () => {
     this.setState({ loading: true });
