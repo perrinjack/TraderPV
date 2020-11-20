@@ -21,7 +21,7 @@ const CombinedDarkTheme = {
   roundness: 6,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#3498db',
+    primary: '#4169e1',
     accent: '#4169e1',
     background: '#f1c40f',
     surface: '#1d2238',

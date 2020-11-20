@@ -77,6 +77,7 @@ import {
   VictoryAxis,
   LineSegment,
   VictoryBrushLine,
+  VictoryLegend,
 } from 'victory-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 const VictoryZoomVoronoiContainer = createContainer('zoom', 'voronoi');
@@ -85,8 +86,8 @@ export class Chart extends React.Component {
     return this.props.data ? (
       // <View style={styles.container}>
       <VictoryChart
-      // minDomain={{ y: 0.83 }}
-      //    maxDomain={{ y: 0.89 }}
+        // minDomain={{ y: 0.83 }}
+        //    maxDomain={{ y: 0.89 }}
         scale={{ x: 'time' }}
         theme={VictoryTheme.material}
         fixLabelOverlap={true}
@@ -96,8 +97,17 @@ export class Chart extends React.Component {
         //   />
         // }
       >
+        <VictoryLegend
+          x={125}
+          y={10}
+          centerTitle
+          orientation="horizontal"
+          gutter={20}
+          
+          colorScale={[ '#4169e1' ]}
+          data={[{ name: 'Exchange rate' }]}
+        />
         <VictoryAxis
-         
           dependentAxis
           style={{
             grid: { stroke: '#718096', strokeDasharray: '2' },
@@ -112,7 +122,7 @@ export class Chart extends React.Component {
         />
         <VictoryLine
           style={{
-            data: { stroke: '#c43a31' },
+            data: { stroke: '#4169e1' },
             parent: { border: '1px solid #ccc' },
           }}
           data={this.props.data}

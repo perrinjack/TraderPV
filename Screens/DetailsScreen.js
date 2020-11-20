@@ -8,7 +8,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-import { TabView } from 'react-native-tab-view';
+import { TabView, TabBar } from 'react-native-tab-view';
 
 import { Card } from 'react-native-paper';
 import { Chart } from '../Components/chart';
@@ -29,8 +29,8 @@ const initialLayout = { width: Dimensions.get('window').width };
 export function DetailsScreen(props) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Daily' },
-    { key: 'second', title: 'Monthly' },
+    { key: 'first', title: 'Today' },
+    { key: 'second', title: 'Daily' },
   ]);
 
   const { fromCode, toCode, fromCodeFull, toCodeFull } = props.route.params;
@@ -38,16 +38,16 @@ export function DetailsScreen(props) {
     switch (route.key) {
       case 'first':
         return (
-          <FirstRoute
-            title={'Daily Rates'}
+          <SecondRoute
+            title={'Todays Rate'}
             fromCode={fromCode}
             toCode={toCode}
           />
         );
       case 'second':
         return (
-          <SecondRoute
-            title={'Monthly Rates'}
+          <FirstRoute
+            title={'Daily Rates'}
             fromCode={fromCode}
             toCode={toCode}
           />
@@ -57,6 +57,14 @@ export function DetailsScreen(props) {
         return null;
     }
   };
+
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      indicatorStyle={{ backgroundColor: 'white' }}
+      style={{ backgroundColor: '#4169e1'}}
+    />
+  );
 
   return (
     <SafeAreaView style={styles.topbackdrop}>
@@ -71,6 +79,9 @@ export function DetailsScreen(props) {
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
+        renderTabBar={renderTabBar}
+        
+        
       />
     </SafeAreaView>
   );
