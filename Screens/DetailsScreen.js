@@ -8,7 +8,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-import { TabView, TabBar } from 'react-native-tab-view';
+import { TabView, TabBar, PagerScroll } from 'react-native-tab-view';
 
 import { Card } from 'react-native-paper';
 import { Chart } from '../Components/chart';
@@ -58,11 +58,11 @@ export function DetailsScreen(props) {
     }
   };
 
-  const renderTabBar = props => (
+  const renderTabBar = (props) => (
     <TabBar
       {...props}
       indicatorStyle={{ backgroundColor: 'white' }}
-      style={{ backgroundColor: '#4169e1'}}
+      style={{ backgroundColor: '#4169e1' }}
     />
   );
 
@@ -80,8 +80,6 @@ export function DetailsScreen(props) {
         onIndexChange={setIndex}
         initialLayout={initialLayout}
         renderTabBar={renderTabBar}
-        
-        
       />
     </SafeAreaView>
   );

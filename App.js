@@ -42,13 +42,13 @@ function App() {
             inactiveTintColor: 'lightgray',
             activeBackgroundColor: '#1d2238',
             inactiveBackgroundColor: '#1d2238',
-            style: {borderTopWidth: 0},
+            style: { borderTopWidth: 0 },
           }}
           screenOptions={({ route }) => ({
             // unmountOnBlur: true,
             tabBarIcon: ({ focused, size }) => {
               let iconName;
-              let color = '#3498db';
+              let color = '#4169e1';
               if (route.name === 'Home') {
                 iconName = focused ? 'ios-home' : 'ios-add';
               } else if (route.name === 'Settings') {
