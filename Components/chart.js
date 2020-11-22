@@ -1,84 +1,14 @@
 import React from 'react';
-import { Dimensions, Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { Line } from 'react-native-svg';
-import {
-  LineChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
-} from 'react-native-chart-kit';
-// const screen = Dimensions.get('screen').width;
-
-// export class Chart extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { width: Dimensions.get('screen').width };
-//   }
-//   componentDidMount() {
-//     Dimensions.addEventListener('change', this.onChange);
-//   }
-
-//   componentWillUnmount() {
-//     Dimensions.removeEventListener('change', this.onChange);
-//   }
-
-//   onChange = ({ screen }) => {
-//     this.setState({ width: Dimensions.get('screen').width });
-//     console.log('Changed');
-//   };
-
-//   render() {
-//     return (
-//       <LineChart
-//         data={data(this.props.data)}
-//         width={this.state.width}
-//         height={220}
-//         chartConfig={chartConfig}
-//         bezier
-//         // yAxisLabel="$"
-//         yAxisSuffix="p"
-//       />
-//     );
-//   }
-// }
-
-// const chartConfig = {
-//   backgroundGradientFrom: '#1d2238',
-//   backgroundGradientFromOpacity: 0,
-//   backgroundGradientTo: '#1d2238',
-//   backgroundGradientToOpacity: 0.5,
-//   color: (opacity = 1) => `#4169e1`,
-//   strokeWidth: 2, // optional, default 3
-//   barPercentage: 0.5,
-//   useShadowColorFromDataset: true, // optional
-// };
-
-// const data = (data_in) => {
-//   return {
-
-//     datasets: [
-//       {
-//         data: data_in,
-//         color: (opacity = 1) => `#4169e1`, // optional
-//         strokeWidth: 2, // optional
-//       },
-//     ],
-//     legend: ['Exchange Rate'], // optional
-//   };
-// };
-
 import {
   VictoryLine,
   VictoryChart,
   VictoryTheme,
   VictoryCursorContainer,
-  VictoryLabel,
   createContainer,
   VictoryAxis,
-  VictoryBrushLine,
   VictoryLegend,
-  ChartContainer,
 } from 'victory-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 const VictoryZoomVoronoiContainer = createContainer('cursor', 'voronoi');
@@ -94,19 +24,14 @@ export class Chart extends React.Component {
     // Typical usage (don't forget to compare props):
     if (this.props.data !== prevProps.data) {
       this.setState({
-        data: this.props.data.[0].y,
-        date: this.props.data.[0].x,
+        data: this.props.data[0].y,
+        date: this.props.data[0].x,
       });
     }
   }
 
   handleCursorChange(value, data) {
     if (value === null) return null;
-    // console.log(value);
-    // console.log(data);
-    // points = data.filter(
-    //   (item) => item.x.toDateString() === value.toDateString()
-    // );
     const start = data[0].x;
     console.log(start);
     const range = data.slice(-1)[0].x - start;
@@ -114,6 +39,20 @@ export class Chart extends React.Component {
     console.log(data[index]);
     this.setState({ data: data[index].y, date: data[index].x });
     return data[index];
+  }
+
+  getMin() {
+    return (
+      Math.min(...this.props.data.map((item) => item.y)) -
+      0.001 * Math.min(...this.props.data.map((item) => item.y))
+    );
+  }
+
+  getMax() {
+    return (
+      Math.max(...this.props.data.map((item) => item.y)) +
+      0.001 * Math.max(...this.props.data.map((item) => item.y))
+    );
   }
   render() {
     return this.props.data ? (
@@ -129,8 +68,8 @@ export class Chart extends React.Component {
         </View>
         <View style={styles.container}>
           <VictoryChart
-            minDomain={{ y: 103.5 }}
-            maxDomain={{ y: 103.9 }}
+            minDomain={{ y: this.getMin() }}
+            maxDomain={{ y: this.getMax() }}
             scale={{ x: 'time' }}
             theme={VictoryTheme.material}
             fixLabelOverlap={true}
@@ -141,10 +80,6 @@ export class Chart extends React.Component {
                   this.handleCursorChange(value, this.props.data)
                 }
                 cursorComponent={<Line stroke="yellow" strokeWidth={1.5} />}
-
-                // cursorLabel={(cursor) =>
-                //   `${new Date(activePoint.x)}, ${Math.round(activePoint.y)}`
-                // }
               />
             }
           >

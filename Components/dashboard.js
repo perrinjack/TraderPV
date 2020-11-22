@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import { SafeAreaView } from 'react-native';
+
 import { apiKey } from '../apiKey.js';
 import axios from 'axios';
-import { StyleSheet, ScrollView, View } from 'react-native';
-import {
-  Surface,
-  Text,
-  Card,
-  Title,
-  Paragraph,
-  IconButton,
-} from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { Text, Card, Title, Paragraph, IconButton } from 'react-native-paper';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -37,16 +30,15 @@ export class Dashboard extends React.Component {
         `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${this.props.from}&to_currency=${this.props.to}&apikey=${apiKey}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
 
-        console.log('Updated');
+        // console.log('Updated');
         this.setState({
           data: [res.data],
         });
         this.setState({
           loaded: true,
         });
-        // console.log(res.data['Realtime Currency Exchange Rate']["9. Ask Price"]);
       });
   };
 
@@ -73,10 +65,14 @@ export class Dashboard extends React.Component {
               })
             }
           >
-            
-            
             <Card.Content>
-            <View><IconButton style={styles.button} color={'white'} icon="close"></IconButton></View>
+              <View>
+                <IconButton
+                  style={styles.button}
+                  color={'white'}
+                  icon="close"
+                ></IconButton>
+              </View>
               <View style={styles.row}>
                 <Title>
                   {
@@ -92,21 +88,7 @@ export class Dashboard extends React.Component {
                   }
                 </Title>
               </View>
-              {/* <View style={styles.updaterow}>
-                <Paragraph>
-                  {
-                    this.state.data[0]['Realtime Currency Exchange Rate'][
-                      '2. From_Currency Name'
-                    ]
-                  }{' '}
-                  /{' '}
-                  {
-                    this.state.data[0]['Realtime Currency Exchange Rate'][
-                      '4. To_Currency Name'
-                    ]
-                  }
-                </Paragraph>
-              </View> */}
+
               <View style={styles.numberrow}>
                 <View style={styles.bidcolumn}>
                   <Text>
