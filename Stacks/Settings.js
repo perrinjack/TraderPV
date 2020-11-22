@@ -30,7 +30,7 @@ export class SettingsScreen extends React.Component {
     return (
       <List.Item
         style={styles.list}
-        title="USD / JPY"
+        title={`${item.from} / ${item.to}`}
         description="United States Dollar / Japanese Yen"
         left={(props) => <Button mode="text">£ / $ </Button>}
         right={(props) => (

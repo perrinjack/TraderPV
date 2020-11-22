@@ -10,5 +10,35 @@
     "from": "USD",
     "to": "JPY",
     "shown": true
-  }
+  },
+  {
+    "id": "bd7acbea465",
+    "from": "USD",
+    "to": "GBP",
+    "shown": true
+  },
+  {
+    "id": "bd7acbea46-ae35",
+    "from": "USD",
+    "to": "CAD",
+    "shown": true
+  },
+  {
+    "id": "bd7acbe-ae3ad5",
+    "from": "USD",
+    "to": "AUD",
+    "shown": true
+  },
+  // {
+  //   "id": "bea46-ae3ad5",
+  //   "from": "GBP",
+  //   "to": "EUR",
+  //   "shown": true
+  // },
+  // {
+  //   "id": "bea46-aed5",
+  //   "from": "GBP",
+  //   "to": "AUD",
+  //   "shown": true
+  // }
 ]
