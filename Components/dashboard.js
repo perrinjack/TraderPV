@@ -162,10 +162,9 @@ const styles = StyleSheet.create({
     fontSize: 21,
   },
   button: {
-    // alignSelf: 'flex-end',
     color: 'white',
     right: -25,
-    top: -20,
+    top: -25,
 
     position: 'absolute',
   },
