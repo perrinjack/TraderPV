@@ -32,7 +32,7 @@ export class SecondRoute extends React.Component {
         `https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${this.props.fromCode}&to_symbol=${this.props.toCode}&outputsize=compact&interval=5min&apikey=${apiKey}`
       )
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         this.setState({
           data: Object.keys(res.data['Time Series FX (5min)']).map((date) => ({
             x: new Date(moment(date)),
@@ -46,7 +46,9 @@ export class SecondRoute extends React.Component {
       <View>
         <Card>
           <Card.Title title={`${this.props.title}`} />
-          <Chart data={this.state.data} labels={this.state.dataLabels} />
+          <Card.Content>
+            <Chart data={this.state.data} labels={this.state.dataLabels} />
+          </Card.Content>
         </Card>
       </View>
     );

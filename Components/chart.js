@@ -84,7 +84,7 @@ export class Chart extends React.Component {
             }
           >
             <VictoryLegend
-              x={125}
+              x={108}
               y={10}
               centerTitle
               orientation="horizontal"
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   activePoint: {
-    color: 'white',
+    color: 'yellow',
   },
   activePointItems: {
     flexDirection: 'row',
