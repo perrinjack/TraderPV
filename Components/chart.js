@@ -66,12 +66,11 @@ export class Chart extends React.Component {
             </Text>
           </View>
         </View>
-        <View >
+        <View>
           <VictoryChart
             minDomain={{ y: this.getMin() }}
             maxDomain={{ y: this.getMax() }}
             scale={{ x: 'time' }}
-            height = {500}
             theme={VictoryTheme.material}
             fixLabelOverlap={true}
             containerComponent={

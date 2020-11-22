@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  card: {
+    shadowColor: '#1d2238',
+    
+  }
 });
 
 export class FirstRoute extends React.Component {
@@ -54,7 +58,7 @@ export class FirstRoute extends React.Component {
   render() {
     return (
       <View>
-        <Card>
+        <Card style = {styles.card}>
           <Card.Title title={`${this.props.title}`} />
           <Card.Content>
           <Chart data={this.state.data} labels={this.state.dataLabels} />

@@ -150,31 +150,6 @@ export class HomeScreen extends React.Component {
             />
           }
         />
-
-        {/* <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          />
-          <MockDashboard
-            navigation={this.props.navigation}
-            title={'USD / GBP'}
-          /> */}
       </SafeAreaView>
     );
   }

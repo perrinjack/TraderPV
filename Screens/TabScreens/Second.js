@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
   scene: {
     flex: 1,
   },
+  card: {
+    shadowColor: '#1d2238',
+    
+  }
 });
 
 export class SecondRoute extends React.Component {
@@ -44,11 +48,11 @@ export class SecondRoute extends React.Component {
   render() {
     return (
       <View>
-        <Card>
+        <Card style = {styles.card}>
           <Card.Title title={`${this.props.title}`} />
-          <Card.Content>
+          <Card.Content style = {styles.list}>
             <Chart data={this.state.data} labels={this.state.dataLabels} />
-          </Card.Content>
+          </Card.Content >
         </Card>
       </View>
     );
