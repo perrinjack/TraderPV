@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { apiKey } from '../../apiKey.js';
 import axios from 'axios';
 import { Card } from 'react-native-paper';
@@ -9,6 +9,17 @@ import { Chart } from '../../Components/chart';
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
+  },
+  activePoint: {
+    color: 'white',
+  },
+  activePointItems: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  activePointItem: {
+    flexDirection: 'column',
+    alignItems:'center'
   },
 });
 
@@ -45,6 +56,8 @@ export class FirstRoute extends React.Component {
       <View>
         <Card>
           <Card.Title title={`${this.props.title}`} />
+          
+
           <Chart data={this.state.data} labels={this.state.dataLabels} />
         </Card>
       </View>

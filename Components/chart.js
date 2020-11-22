@@ -86,9 +86,20 @@ export class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null,
+      data: 0.87,
+      date: new Date(),
     };
   }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.data !== prevProps.data) {
+      this.setState({
+        data: this.props.data.[0].y,
+        date: this.props.data.[0].x,
+      });
+    }
+  }
+
   handleCursorChange(value, data) {
     if (value === null) return null;
     // console.log(value);
@@ -101,12 +112,21 @@ export class Chart extends React.Component {
     const range = data.slice(-1)[0].x - start;
     const index = Math.round(((value - start) / range) * (data.length - 1));
     console.log(data[index]);
-    this.setState({ data: data[index].y });
+    this.setState({ data: data[index].y, date: data[index].x });
     return data[index];
   }
   render() {
     return this.props.data ? (
       <View>
+        <View style={styles.activePointItems}>
+          <View style={styles.activePointItem}>
+            <Text style={styles.activePoint}>{this.state.data}</Text>
+
+            <Text style={styles.activePoint}>
+              {this.state.date.toDateString()}
+            </Text>
+          </View>
+        </View>
         <View style={styles.container}>
           <VictoryChart
             minDomain={{ y: 103.5 }}
@@ -159,9 +179,6 @@ export class Chart extends React.Component {
             />
           </VictoryChart>
         </View>
-        <View>
-         <Text style = {styles.spinnerTextStyle}>{this.state.data}</Text>
-        </View>
       </View>
     ) : (
       <Spinner
@@ -182,5 +199,16 @@ const styles = StyleSheet.create({
   },
   spinnerTextStyle: {
     color: '#FFF',
+  },
+  activePoint: {
+    color: 'white',
+  },
+  activePointItems: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  activePointItem: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
