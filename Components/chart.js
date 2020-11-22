@@ -71,6 +71,7 @@ export class Chart extends React.Component {
             minDomain={{ y: this.getMin() }}
             maxDomain={{ y: this.getMax() }}
             scale={{ x: 'time' }}
+            height = {500}
             theme={VictoryTheme.material}
             fixLabelOverlap={true}
             containerComponent={

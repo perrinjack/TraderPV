@@ -4,6 +4,7 @@ import {
   NavigationContainer,
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
+import {StatusBar} from "react-native"
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -34,6 +35,7 @@ const Tab = createBottomTabNavigator();
 function App() {
   return (
     <PaperProvider theme={CombinedDarkTheme}>
+      <StatusBar  barStyle="light-content" translucent={true} />
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName={'Home'}
@@ -42,7 +44,7 @@ function App() {
             inactiveTintColor: 'lightgray',
             activeBackgroundColor: '#1d2238',
             inactiveBackgroundColor: '#1d2238',
-            style: { borderTopWidth: 1, borderTopColor: 'grey' },
+            style: { borderTopWidth: 1, borderTopColor: 'grey', backgroundColor: '#1d2238'},
           }}
           screenOptions={({ route }) => ({
             // unmountOnBlur: true,
