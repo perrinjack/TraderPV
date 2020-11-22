@@ -66,7 +66,7 @@ export class Chart extends React.Component {
             </Text>
           </View>
         </View>
-        <View style={styles.container}>
+        <View >
           <VictoryChart
             minDomain={{ y: this.getMin() }}
             maxDomain={{ y: this.getMax() }}
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5fcff',
+    backgroundColor: 'white',
   },
   spinnerTextStyle: {
     color: '#FFF',

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   activePointItem: {
     flexDirection: 'column',
-    alignItems:'center'
+    alignItems: 'center',
   },
 });
 
@@ -56,9 +56,9 @@ export class FirstRoute extends React.Component {
       <View>
         <Card>
           <Card.Title title={`${this.props.title}`} />
-          
-
+          <Card.Content>
           <Chart data={this.state.data} labels={this.state.dataLabels} />
+          </Card.Content>
         </Card>
       </View>
     );
