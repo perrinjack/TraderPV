@@ -47,26 +47,30 @@ const DATA = [
     to: 'EUR',
     shown: true,
   },
-  // {
-  //   id: 'bd7acbea-d5-3ad',
-  //   from: 'AUD',
-  //   to: 'USD',
-  // },
-  // {
-  //   id: 'bd7acbea-c1b1-46c2-aed5-abb28ba',
-  //   from: 'GBP',
-  //   to: 'CHF',
-  // },
-  // {
-  //   id: 'bda-c1b1-46c2-ae3ad5',
-  //   from: 'NZD',
-  //   to: 'EUR',
-  // },
-  // {
-  //   id: 'bd7cbea-c46c2-aed5-3ad',
-  //   from: 'AUD',
-  //   to: 'JPY',
-  // },
+  {
+    id: 'bd7acbea-d5-3ad',
+    from: 'AUD',
+    to: 'USD',
+    shown: true,
+  },
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-abb28ba',
+    from: 'GBP',
+    to: 'CHF',
+    shown: true,
+  },
+  {
+    id: 'bda-c1b1-46c2-ae3ad5',
+    from: 'NZD',
+    to: 'EUR',
+    shown: true,
+  },
+  {
+    id: 'bd7cbea-c46c2-aed5-3ad',
+    from: 'AUD',
+    to: 'JPY',
+    shown: true,
+  },
 ];
 
 const styles = StyleSheet.create({

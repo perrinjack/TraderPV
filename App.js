@@ -42,7 +42,7 @@ function App() {
             inactiveTintColor: 'lightgray',
             activeBackgroundColor: '#1d2238',
             inactiveBackgroundColor: '#1d2238',
-            style: { borderTopWidth: 0 },
+            style: { borderTopWidth: 1, borderTopColor: 'grey' },
           }}
           screenOptions={({ route }) => ({
             // unmountOnBlur: true,
